@@ -5,12 +5,13 @@
 // the format is: fetch().then().then().catch()
 //it's easier to read if we put each step in its own line,
 //that's why the periods start the then lines.
+//fetch is the name of the function
 
 fetch("houses.json")
     .then((response) => response.json())
     .then((data) => {
         //create a temp holder to append all the html generated inside the forEach iterator
-        let html = "";
+        let html = "container";
 
         //the argument "house" passed to the arrow function
         //holds each item in the array in turn.
@@ -30,4 +31,5 @@ fetch("houses.json")
         container.innerHTML = html;
     })
     .catch((err) => console.log("Oops!", err));
-    //this only runs if there is an error during the above process
+    //this only runs if there is an error during the above process. end fetch. Log is a function. 
+    //method of console object
