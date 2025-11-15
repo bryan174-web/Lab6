@@ -1,3 +1,12 @@
+h2 {
+  margin-top:8rem;
+}
+
+#characters {
+  border: 3px solid #ddd;
+  padding: 2rem;
+}
+
 /* css vairables, costum properties */
 :root {
     --light: #eee;

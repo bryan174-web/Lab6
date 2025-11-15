@@ -1,5 +1,8 @@
 
-  //fetch color. I had to delete all of my part one work to get this fetch to work
+ 
+ 
+ 
+ //Part2 fetch color. I had to delete all of my part one work to get this fetch to work
   document.addEventListener("DOMContentLoaded",init);
 // generata a color scheme
  async function getColorInfo() {
@@ -58,5 +61,12 @@ function getRandomHex() {
   }
   return color;
 }
+
+
+
+
+
+
+
 
   

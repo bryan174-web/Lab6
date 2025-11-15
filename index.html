@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>colors</title>
+    <title>Fetching External Data</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="j/main.js" ></script>
 </head>
 <body>
-    <div id="container">Remote info goes here.</div>
+    <div id="container">Lab 6: Fetch.</div>
     <p>Types of Houses</p>
 <!--my guess is that this is wrong. But this is what was on the lecture-->
-<dl>
-    <dt>Stark</dt>
-    <dd>Eddard, Catelyn, Robb, Sansa, Arya, Jon Snow</dd>
-    <dt>Lannister</dt>
-    <dd>Tywin, Cersei, Jaime, Tyson</dd>
-    <dt>Baratheon</dt>
-    <dd>Robert, Stannis, Renly</dd>
-    <dt>Targaryen</dt>
-    <dd>Aerys, Daenerys, Viserys</dd>
-    
-</dl>
+<h1>Customized</h1> <form>
+<label for="house">House: </label> 
+  <select name="house" id="house">
+<option value="" selected disabled>Select a house</option> 
+  </select>
+</form>
+
+<ul id="characters"></ul>
+
+
 
 <div class="light"></div>    
 <div class="mid"></div>
@@ -31,5 +30,66 @@
   <a class="button" href="index.html">Get New Color Scheme</a>
 
 </body>
+<script>
+    //part 1     I'm happy that I got assignment part 1 and 2 together.
+document.addEventListener("DOMContentLoaded", init);
+
+function init() {//
+  let houses = [];
+
+ fetch("https://assets.codepen.io/2538893/houses.json")
+    .then((response) => response.json())
+    .then((data) => {
+    
+      houses = data;
+      // loop through the houses array and populate the
+      // dropdown with the house names and codes.
+      houses.forEach((item) => {
+        const option = document.createElement("OPTION");
+        option.value = item.code;
+        option.innerText = item.name;
+        house.appendChild(option);
+      });
+    })
+
+   .catch((err) => {
+      console.log("oops ", err.message);
+    });
+    
+  let house = document.getElementById("house");
+
+   house.addEventListener("change", (e) => {
+    //get the house code from the select
+    const code = e.target.value;
+    let members = [];
+
+    // loop through houses array
+    // check for a matching house code,
+    // grab the members of that house
+    houses.forEach((item) => {
+      if (item.code === code) {
+        members = item.members;
+      }
+    });
+   const container = document.getElementById("characters");
+     container.innerHTML = "";
+
+       if (members.length === 0) {
+      let item = document.createElement("LI");
+      item.innerText = "No House Selected";
+      container.appendChild(item);
+    } else {
+      // create the li's and append to the ul
+      members.forEach((person) => {
+        let item = document.createElement("LI");
+        item.innerText = person;
+        container.appendChild(item);
+      });
+    } // end if/else
+  }); //end addEventListener - change
+} //end init
+
+
+</script>
 </html>
 
