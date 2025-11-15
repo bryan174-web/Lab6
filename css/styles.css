@@ -1,6 +1,36 @@
-
+/* css vairables, costum properties */
 :root {
     --light: #eee;
     --mid:#888;
     --dark: #223;
+}
+  body {
+                background-color: #444;
+                transition: all 1s;
+  }
+div {
+  padding: 2rem;
+  aspect-ratio: 4/1;
+  width: 30rem;
+  margin: 1rem auto;
+  border-radius: 25% 0 0% 0;
+}
+.light {
+  background-color: var(--light);
+}
+.mid {
+  background-color: var(--mid);
+}
+.dark {
+  background-color: var(--dark);
+}
+.button {
+  padding: 0.5rem;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  width: 10rem;
+  display: block;
+  background-color: rgb(139, 176, 243);
+  color: white;
+  text-decoration: none;
 }
